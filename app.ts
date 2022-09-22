@@ -7,8 +7,12 @@ import logger from "morgan";
 
 dotenv.config();
 
+import { connect } from './db/config/config';
+
 const app: Express = express();
 const port = 3000 || process.env.PORT;
+
+connect();
 
 app.use(logger("dev"));
 app.use(json());
