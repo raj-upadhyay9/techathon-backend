@@ -7,7 +7,8 @@ import logger from "morgan";
 
 dotenv.config();
 
-import { connect } from './db/config/config';
+import { connect,disconnect } from './db/config/config';
+import User from './db/models/user/users';
 
 const app: Express = express();
 const port = 3000 || process.env.PORT;
@@ -26,6 +27,18 @@ app.use(errorHandler());
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json("hey");
+});
+
+app.get("/db", async (req: Request, res: Response) => {
+  connect();
+  try {
+    let user = await User.findOneOrCreate('1');
+    res.status(201).json(user);
+    disconnect();
+  }
+  catch(err) {
+    console.log(err);
+  }
 });
 
 app.listen(port, () => {
