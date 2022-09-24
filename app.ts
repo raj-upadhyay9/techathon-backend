@@ -32,7 +32,7 @@ app.get("/", (req: Request, res: Response) => {
 app.get("/db", async (req: Request, res: Response) => {
   connect();
   try {
-    let user = await User.findOneOrCreate('1');
+    let user = await User.findone('1');
     res.status(201).json(user);
     disconnect();
   }

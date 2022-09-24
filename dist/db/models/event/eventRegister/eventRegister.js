@@ -33,43 +33,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const UserSchema = new mongoose_1.Schema({
-    email_id: String,
-    password: String,
-    firstName: String,
-    lastName: String,
-    college: String
+const EventRegisterSchema = new mongoose_1.Schema({
+    event_id: String,
+    user_id: String
 });
-UserSchema.methods.setPassword = function setPassword(newPassword) {
+EventRegisterSchema.statics.findone = function findone(event_id) {
     return __awaiter(this, void 0, void 0, function* () {
-        this.password = newPassword;
-        yield this.save();
-    });
-};
-UserSchema.methods.setName = function setName(newFirstName, newLastName) {
-    return __awaiter(this, void 0, void 0, function* () {
-        this.firstName = newFirstName;
-        this.lastName = newLastName;
-        yield this.save();
-    });
-};
-UserSchema.methods.setCollege = function setCollege(newCollege) {
-    return __awaiter(this, void 0, void 0, function* () {
-        this.college = newCollege;
-        yield this.save();
-    });
-};
-UserSchema.statics.findone = function findone(user_id) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const record = yield this.findOne({ user_id });
+        const record = yield this.findOne({ event_id });
         return record;
     });
 };
-UserSchema.statics.findAll = function findAll() {
+EventRegisterSchema.statics.findAll = function findAll() {
     return __awaiter(this, void 0, void 0, function* () {
         const record = yield this.find();
         return record;
     });
 };
-const User = mongoose_1.default.model("User", UserSchema);
-exports.default = User;
+const EventRegister = mongoose_1.default.model("Event", EventRegisterSchema);
+exports.default = EventRegister;

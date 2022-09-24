@@ -33,43 +33,48 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importStar(require("mongoose"));
-const UserSchema = new mongoose_1.Schema({
-    email_id: String,
-    password: String,
-    firstName: String,
-    lastName: String,
-    college: String
+const EventSchema = new mongoose_1.Schema({
+    event_id: String,
+    eventName: String,
+    eventDate: Date,
+    imageLink: String,
+    host: String,
+    location: String,
+    desc: String,
+    available: String,
+    domain: String,
+    price: Number,
+    duration: String
 });
-UserSchema.methods.setPassword = function setPassword(newPassword) {
+EventSchema.methods.setEventName = function setEventName(newEventName) {
     return __awaiter(this, void 0, void 0, function* () {
-        this.password = newPassword;
+        this.eventName = newEventName;
         yield this.save();
     });
 };
-UserSchema.methods.setName = function setName(newFirstName, newLastName) {
+EventSchema.methods.setEventDate = function setEventDate(newEventDate) {
     return __awaiter(this, void 0, void 0, function* () {
-        this.firstName = newFirstName;
-        this.lastName = newLastName;
+        this.eventDate = newEventDate;
         yield this.save();
     });
 };
-UserSchema.methods.setCollege = function setCollege(newCollege) {
+EventSchema.methods.setImageLink = function setImageLink(newImageLink) {
     return __awaiter(this, void 0, void 0, function* () {
-        this.college = newCollege;
+        this.imageLink = newImageLink;
         yield this.save();
     });
 };
-UserSchema.statics.findone = function findone(user_id) {
+EventSchema.statics.findone = function findone(user_id) {
     return __awaiter(this, void 0, void 0, function* () {
         const record = yield this.findOne({ user_id });
         return record;
     });
 };
-UserSchema.statics.findAll = function findAll() {
+EventSchema.statics.findAll = function findAll() {
     return __awaiter(this, void 0, void 0, function* () {
         const record = yield this.find();
         return record;
     });
 };
-const User = mongoose_1.default.model("User", UserSchema);
-exports.default = User;
+const Event = mongoose_1.default.model("Event", EventSchema);
+exports.default = Event;

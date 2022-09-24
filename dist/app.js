@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 app.get("/db", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     (0, config_1.connect)();
     try {
-        let user = yield users_1.default.findOneOrCreate('1');
+        let user = yield users_1.default.findone('1');
         res.status(201).json(user);
         (0, config_1.disconnect)();
     }
