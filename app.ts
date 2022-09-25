@@ -1,19 +1,21 @@
-import dotenv from "dotenv";
 import express,{ Express, Request, Response } from "express";
 import errorHandler from "errorhandler";
 import { json, urlencoded } from "body-parser";
 import methodOverride from "method-override";
 import logger from "morgan";
+import {connect} from './db/config/config'
 
-dotenv.config();
+require('dotenv').config();
+connect();
 
-import { connect,disconnect } from './db/config/config';
-import User from './db/models/user/users';
+import user from './routers/user/user';
+import transaction from "./routers/transaction/transaction";
+import event from './routers/event/event'
+import eventRegister from "./routers/eventRegister/eventRegister";
+import EventAttendance from "./routers/eventAttendance/eventAttendance";
 
 const app: Express = express();
 const port = 3000 || process.env.PORT;
-
-connect();
 
 app.use(logger("dev"));
 app.use(json());
@@ -29,17 +31,23 @@ app.get("/", (req: Request, res: Response) => {
   res.status(200).json("hey");
 });
 
-app.get("/db", async (req: Request, res: Response) => {
-  connect();
-  try {
-    let user = await User.findone('1');
-    res.status(201).json(user);
-    disconnect();
-  }
-  catch(err) {
-    console.log(err);
-  }
-});
+app.use('/user', user);
+app.use('/transaction', transaction);
+app.use('/event', event);
+app.use('/eventRegister', eventRegister);
+app.use('/eventAttendance', EventAttendance);
+
+// app.get("/db", async (req: Request, res: Response) => {
+//   connect();
+//   try {
+//     let user = await User.findone('1');
+//     res.status(201).json(user);
+//     disconnect();
+//   }
+//   catch(err) {
+//     console.log(err);
+//   }
+// });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

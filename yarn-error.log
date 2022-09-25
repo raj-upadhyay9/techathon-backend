@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add mongoose-find-by-reference @types/mongoose-find-by-refernce
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add -D @types/uid
 
 PATH: 
   C:\Users\Raj\anaconda3;C:\Users\Raj\anaconda3\Library\mingw-w64\bin;C:\Users\Raj\anaconda3\Library\usr\bin;C:\Users\Raj\anaconda3\Library\bin;C:\Users\Raj\anaconda3\Scripts;C:\Users\Raj\anaconda3\bin;C:\Users\Raj\anaconda3\condabin;C:\Users\Raj\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Raj\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python38\Scripts;C:\Python38;C:\Python37\Scripts;C:\Python37;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\libnvvp;C:\Python310\Scripts;C:\Python310;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Python39\Scripts;C:\Python39;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\R\R-4.1.1\bin;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Hadoop\hadoop-3.3.1\bin;C:\Program Files\Amazon\AWSCLIV2;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\MATLAB\R2021b\bin;C:\Program Files\Git LFS;C:\Program Files\nodejs;C:\Program Files\OpenJDK\openjdk-11.0.13_8\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\Nsight Compute 2020.3.1;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Git\cmd;C:\Program Files\PostgreSQL\14\bin;C:\tools\BCURRAN3;C:\Users\Raj\anaconda3;C:\Users\Raj\anaconda3\Library\mingw-w64\bin;C:\Users\Raj\anaconda3\Library\usr\bin;C:\Users\Raj\anaconda3\Library\bin;C:\Users\Raj\anaconda3\Scripts;C:\Users\Raj\AppData\Local\Microsoft\WindowsApps;C:\Users\Raj\AppData\Local\Programs\Microsoft VS Code\bin;C:\msys64\mingw64\bin;C:\spark\bin;C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin;C:\Program Files\heroku\bin;C:\Users\Raj\AppData\Roaming\npm;C:\Users\Raj\AppData\Local\Yarn\bin;C:\Users\Raj\AppData\Local\Android\Sdk\platform-tools;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fmongoose-find-by-refernce: Not found
+  Error: https://registry.yarnpkg.com/@types%2fuid: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66140:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140885:22)
       at Request.emit (node:events:520:28)
@@ -46,7 +46,8 @@ npm manifest:
       "express": "^4.18.1",
       "method-override": "^3.0.0",
       "mongoose": "5.13.8",
-      "morgan": "^1.10.0"
+      "morgan": "^1.10.0",
+      "uid": "^2.0.0"
     },
     "devDependencies": {
       "@types/body-parser": "^1.19.2",
@@ -95,6 +96,11 @@ Lockfile:
     dependencies:
       "@jridgewell/resolve-uri" "^3.0.3"
       "@jridgewell/sourcemap-codec" "^1.4.10"
+  
+  "@lukeed/csprng@^1.0.0":
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/@lukeed/csprng/-/csprng-1.0.1.tgz#625e93a0edb2c830e3c52ce2d67b9d53377c6a66"
+    integrity sha512-uSvJdwQU5nK+Vdf6zxcWAY2A8r7uqe+gePwLWzJ+fsQehq18pc0I2hJKwypZ2aLM90+Er9u1xn4iLJPZ+xlL4g==
   
   "@tsconfig/node10@^1.0.7":
     version "1.0.9"
@@ -1394,6 +1400,13 @@ Lockfile:
     version "4.8.3"
     resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.3.tgz#d59344522c4bc464a65a730ac695007fdb66dd88"
     integrity sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==
+  
+  uid@^2.0.0:
+    version "2.0.0"
+    resolved "https://registry.yarnpkg.com/uid/-/uid-2.0.0.tgz#1773bec106e96955f1658f20272e2ccea414e8bc"
+    integrity sha512-hFw+zKBA1szYdbZWj6FjTxZzJnKNf+wTDcsxlJaXS64MCy9LQEmJUVieGYHCKek/WRyFIcs0cEXtGIQmfvHe2A==
+    dependencies:
+      "@lukeed/csprng" "^1.0.0"
   
   undefsafe@^2.0.5:
     version "2.0.5"
