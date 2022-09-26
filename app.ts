@@ -13,6 +13,7 @@ import transaction from "./routers/transaction/transaction";
 import event from './routers/event/event'
 import eventRegister from "./routers/eventRegister/eventRegister";
 import EventAttendance from "./routers/eventAttendance/eventAttendance";
+import allowCertificate from "./routers/allowCertificate/allowCertificate";
 
 const app: Express = express();
 const port = 3000 || process.env.PORT;
@@ -36,6 +37,7 @@ app.use('/transaction', transaction);
 app.use('/event', event);
 app.use('/eventRegister', eventRegister);
 app.use('/eventAttendance', EventAttendance);
+app.use('/allowCertificate', allowCertificate);
 
 // app.get("/db", async (req: Request, res: Response) => {
 //   connect();

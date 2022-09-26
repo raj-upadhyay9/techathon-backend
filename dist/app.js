@@ -16,6 +16,7 @@ const transaction_1 = __importDefault(require("./routers/transaction/transaction
 const event_1 = __importDefault(require("./routers/event/event"));
 const eventRegister_1 = __importDefault(require("./routers/eventRegister/eventRegister"));
 const eventAttendance_1 = __importDefault(require("./routers/eventAttendance/eventAttendance"));
+const allowCertificate_1 = __importDefault(require("./routers/allowCertificate/allowCertificate"));
 const app = (0, express_1.default)();
 const port = 3000 || process.env.PORT;
 app.use((0, morgan_1.default)("dev"));
@@ -33,6 +34,7 @@ app.use('/transaction', transaction_1.default);
 app.use('/event', event_1.default);
 app.use('/eventRegister', eventRegister_1.default);
 app.use('/eventAttendance', eventAttendance_1.default);
+app.use('/allowCertificate', allowCertificate_1.default);
 // app.get("/db", async (req: Request, res: Response) => {
 //   connect();
 //   try {
