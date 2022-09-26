@@ -11,4 +11,14 @@ services:
       - ./db/config/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
       - ./mongo-volume:/data/db
     ports:
-      - '27017-27019:27017-27019'
+      - '27017:27017'
+
+  app:
+    image: gamer523/techathon-backend
+    container_name: techathon-backend
+    environment:
+    - MONGODB_CONNECTION_STRING=mongodb://test:test@mongodb_test:27017/test
+    links:
+      - mongodb
+    ports:
+    - '3000:3000'

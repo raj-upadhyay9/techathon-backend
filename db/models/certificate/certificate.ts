@@ -5,7 +5,7 @@ interface ICertificate {
     certificate_id: string;
     event_id: string;
     user_id: string;
-    certificateLink: String;
+    certificateLink: string;
 }
 
 interface ICertificateDocument extends ICertificate, Document {

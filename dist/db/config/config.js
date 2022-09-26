@@ -14,12 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.disconnect = exports.connect = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
+require('dotenv').config();
 let database;
 const connect = () => {
     // add your own uri below
-    const uri = "mongodb://test:test@localhost:27017/test";
+    const uri = process.env.MONGODB_CONNECTION_STRING || "mongodb://test:test@localhost:27017/test";
     if (database) {
         return;
     }

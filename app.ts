@@ -14,6 +14,8 @@ import event from './routers/event/event'
 import eventRegister from "./routers/eventRegister/eventRegister";
 import EventAttendance from "./routers/eventAttendance/eventAttendance";
 import allowCertificate from "./routers/allowCertificate/allowCertificate";
+import certificate from "./routers/certificate/certificate";
+import getCertificate from "./routers/getCertificate/getCertificate";
 
 const app: Express = express();
 const port = 3000 || process.env.PORT;
@@ -38,6 +40,7 @@ app.use('/event', event);
 app.use('/eventRegister', eventRegister);
 app.use('/eventAttendance', EventAttendance);
 app.use('/allowCertificate', allowCertificate);
+app.use('/certificate', certificate);
 
 // app.get("/db", async (req: Request, res: Response) => {
 //   connect();
@@ -50,6 +53,9 @@ app.use('/allowCertificate', allowCertificate);
 //     console.log(err);
 //   }
 // });
+
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

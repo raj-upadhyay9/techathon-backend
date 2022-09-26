@@ -7,7 +7,7 @@ router.get('/', async (req: Request, res: Response) => {
  
   try {
     let user = await users.find();
-    res.status(201).json(user);
+    res.status(200).json(user);
   }
   catch(err) {
     console.log(err);
@@ -19,8 +19,8 @@ router.get('/', async (req: Request, res: Response) => {
 router.post('/signup', async (req:Request, res: Response) => {
     
     try {
-    let user = await users.create({email_id:req.params.email_id,password:req.params.password,firstName:req.params.firstName,lastName:req.params.lastName,college:req.params.college});
-    res.status(201).json(user);
+    let user = await users.create({email_id:req.query.email_id,password:req.query.password,firstName:req.query.firstName,lastName:req.query.lastName,college:req.query.college});
+    res.status(200).json(user);
     
   }
   catch(err) {
@@ -32,18 +32,19 @@ router.post('/signin', async (req:Request, res: Response) => {
     
     
     try {
-        let email_id = req.params.email_id;
-        let record = await users.findOne({email_id:email_id});
-        let pwd = record?.password;
-        if (pwd == req.params.password) {
-            res.send(1);
+        let email_id = req.query.email_id;
+        let record = await users.findOne({email_id:email_id!.toString()});
+        let pwd = record!.password;
+        if (pwd == req.query.password!.toString()) {
+          res.status(200).json(record);
         } else {
-            res.send(0);
+            res.status(200).json("wrong pasword");
         }
         
        
   }
-  catch(err) {
+    catch (err) {
+    res.status(404).json(err);
     console.log(err);
   }
 })
@@ -53,7 +54,7 @@ router.post('/findbyid', async (req: Request, res: Response) => {
   console.log(req.query);
   try {
     let user = await users.findOne({ email_id: req.query.email_id?.toString() });
-    res.status(201).json(user);
+    res.status(200).json(user);
     
   }
   catch(err) {
@@ -65,7 +66,7 @@ router.post('/updatebyid', async (req: Request, res: Response) => {
  
     
     try {
-    let user = await users.findByIdAndUpdate(req.params.email_id, { firstName: req.params.firstName, lastName: req.params.lastName, college: req.params.college });
+    let user = await users.findByIdAndUpdate(req.query.email_id, { firstName: req.query.firstName!.toString(), lastName: req.query.lastName!.toString(), college: req.query.college!.toString() });
     res.json(user);
     
   }
@@ -79,7 +80,7 @@ router.post('/deletebyid', async (req: Request, res: Response) => {
  
     
     try {
-    let user = await users.findByIdAndDelete(req.params.email_id);
+    let user = await users.findByIdAndDelete(req.query.email_id);
     res.json(user);
    
   }
